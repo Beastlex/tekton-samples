@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: multiple-steps
+spec:
+  steps:
+    - name: first-step
+      image: registry.access.redhat.com/ubi8/ubi-minimal
+      command:
+        - /bin/bash
+      args: ['-c', 'echo First step running']
+    - name: second-step
+      image: alpine
+      command:
+        - /bin/sh
+      args: ['-c', 'echo Second step running']
