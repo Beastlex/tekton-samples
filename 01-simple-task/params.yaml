@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: with-param
+spec:
+  # params:
+  params:
+    - name: owner
+      type: string
+  steps:
+    - name: step-with-param
+      image: alpine
+      command:
+        - /bin/sh
+      args: ['-c', 'echo hello $(params.owner)']

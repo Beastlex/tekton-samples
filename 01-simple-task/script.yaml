@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: with-script
+spec:
+  steps:
+    - name: step-with-script
+      image: registry.access.redhat.com/ubi8/ubi
+      script: |
+        #!/usr/bin/env bash
+        echo "Perform necessary steps"
+        dnf install iputils -y
+        ping ya.ru -c 5
+        echo "Ok"
+    - name: step-with-node-script
+      image: node:16
+      script: |
+        #!/usr/bin/env node
+        console.log("Hello from NodeJS")
