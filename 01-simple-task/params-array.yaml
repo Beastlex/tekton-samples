@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: with-param-array
+spec:
+  params:
+    - name: gr-items
+      type: array
+      default:
+        - a
+        - b
+        - c
+  steps:
+    - name: array-list
+      image: node:16
+      args:
+        - $(params.gr-items[*])
+      script: |
+        #!/usr/bin/env node
+        const items = process.argv.splice(2);
+        console.log("Our list:");
+        items.map(i => console.log(`=> ${i}`));
