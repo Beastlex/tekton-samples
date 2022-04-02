@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: shared-folder
+spec:
+  # An easy way to share information across your steps is to use the home directory directly. When tasks are initiated, the task run will mount a volume named /tekton/home in each container that runs a step
+  # now deprecated pull request #3878 (https://github.com/tektoncd/pipeline/pull/3878)
+  steps:
+    - name: write
+      image: registry.access.redhat.com/ubi8/ubi-minimal
+      script: |
+        cd ~
+        echo "Getting ready to write to" $(pwd)
+        echo "Message" > message.txt
+    - name: read
+      image: registry.access.redhat.com/ubi8/ubi-minimal
+      command:
+        - /bin/bash
+      args: ['-c', 'cat ~/message.txt']
