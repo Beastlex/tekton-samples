@@ -13,19 +13,19 @@ spec:
       default: '1'
       description: Time
   steps:
-    - name: init
+    - name: init01
       image: registry.access.redhat.com/ubi8/ubi-minimal
       command:
         - /bin/bash
         - '-c'
         - "echo [$(date '+%d/%m/%Y %T')] - Task $(params.task-name) Started"
-    - name: sleep
+    - name: sleep02
       image: registry.access.redhat.com/ubi8/ubi-minimal
       command:
         - /bin/bash
         - '-c'
         - sleep $(params.time)
-    - name: log
+    - name: log03
       image: registry.access.redhat.com/ubi8/ubi-minimal
       command:
         - /bin/bash
