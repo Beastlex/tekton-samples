@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: die-roll-param
+spec:
+  params:
+    - name: sides
+      description: Number sides of dice'
+      default: '6'
+      type: string
+  steps:
+    - name: greetings
+      image: registry.access.redhat.com/ubi8/ubi-minimal
+      command:
+        - /bin/bash
+      args: ['-c', 'echo Rolling $(params.sides)-side dice']
+    - name: generating
+      image: node:16
+      script: |
+        #!/usr/bin/env node
+        const max = $(params.sides);
+        let rndNumber = Math.floor(Math.random() * Math.floor(max)) + 1;
+        console.log(rndNumber);

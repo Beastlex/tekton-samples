@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: param-dice-roll
+spec:
+  tasks:
+    - name: first
+      taskRef:
+        name: pipeline-task01
+    - name: roll
+      taskRef:
+        name: die-roll-param
