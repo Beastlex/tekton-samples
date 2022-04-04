@@ -8,5 +8,8 @@ spec:
       taskRef:
         name: pipeline-task01
     - name: roll
+      params:
+        - name: sides
+          value: '8'
       taskRef:
         name: die-roll-param
