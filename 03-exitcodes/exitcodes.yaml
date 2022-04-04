@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: exitcodes
+spec:
+  tasks:
+    - name: build
+      taskRef:
+        name: log-and-exit
+      params:
+        - name: text
+          value: 'Building...'
+        - name: exitcode
+          value: '0'
+    - name: test
+      taskRef:
+        name: log-and-exit
+      params:
+        - name: text
+          value: 'Testing...'
+        - name: exitcode
+          value: '1'
+    - name: deploy
+      taskRef:
+        name: log-and-exit
+      params:
+        - name: text
+          value: 'Deploying...'
+        - name: exitcode
+          value: '0'
