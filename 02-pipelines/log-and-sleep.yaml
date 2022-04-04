@@ -6,9 +6,12 @@ spec:
   params:
     - name: task-name
       type: string
+      default: 'hello'
+      description: Message
     - name: time
       type: string
       default: '1'
+      description: Time
   steps:
     - name: init
       image: registry.access.redhat.com/ubi8/ubi-minimal

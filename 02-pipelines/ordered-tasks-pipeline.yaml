@@ -13,12 +13,16 @@ spec:
       taskRef:
         name: sleep-and-log
     - name: second
+      runAfter:
+        - first
       params:
         - name: task-name
           value: B
       taskRef:
         name: sleep-and-log
     - name: third
+      runAfter:
+        - second
       params:
         - name: task-name
           value: C
@@ -27,6 +31,8 @@ spec:
       taskRef:
         name: sleep-and-log
     - name: fourth
+      runAfter:
+        - third
       params:
         - name: task-name
           value: D
