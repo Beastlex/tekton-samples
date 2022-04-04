@@ -10,6 +10,7 @@ spec:
       default: http://github/joellord/handson-tekton
   workspaces:
     - name: source
+      mountPath: /home/alex/ws
   steps:
     - name: clone
       image: alpine/git
