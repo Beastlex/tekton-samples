@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: clone-and-ls-pr-
+spec:
+  pipelineRef:
+    name: clone-and-list-pipe
+  workspaces:
+    - name: codebase
+      persistentVolumeClaim:
+        claimName: tekton-pvc
+# Запускать через kubectl
+# $ kubectl create -f ./pipelinerun.yaml
+#  pipelinerun.tekton.dev/clone-and-ls-pr-pd94q created
+# $ tkn pr logs clone-and-ls-pr-pd94q -f
