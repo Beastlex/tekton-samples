@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: git-clone-tr-
+spec:
+  # Пришлось создать TaskRun самостоятельно и запустить
+  # $ kubectl create -f ./2-clone-and-list-tr.yaml
+  #   taskrun.tekton.dev/git-clone-tr-cqphs created
+  # $ tkn taskrun logs git-clone-tr-cqphs
+  # в этой версии не сработало
+  # $ tkn task start clone-and-list -w name=source,emptyDir="" --showlog
+  workspaces:
+    - name: source
+      emptyDir: {}
+  taskRef:
+    name: clone-and-ls
