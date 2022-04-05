@@ -30,5 +30,5 @@ spec:
       image: alpine
       workingDir: $(workspaces.source.path)
       command:
-        - /bin/bash
+        - /bin/sh
       args: ['-c', 'ls ./source']
