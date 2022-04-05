@@ -20,3 +20,5 @@ spec:
           workspace: codebase
       runAfter:
         - clone
+# Запуск с помощью
+# tkn pipeline start clone-and-list-pipe -w name=codebase,claimName=tekton-pvc --showlog
